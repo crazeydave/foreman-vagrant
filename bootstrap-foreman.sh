@@ -11,9 +11,12 @@ else
     # Update system first
     sudo yum update -y
 
-    # Update iptables
+    # Remove the Rejects
+	sudo /sbin/iptables -D FORWARD 1	
+	sudo /sbin/iptables -D INPUT 5
 
     # HTTP/HTTPS
+	
     sudo /sbin/iptables -A INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
     sudo /sbin/iptables -A INPUT -m state --state NEW -m tcp -p tcp --dport 443 -j ACCEPT
 
@@ -33,7 +36,7 @@ else
     sudo /sbin/iptables -A INPUT -m state --state NEW -m tcp -p tcp --dport 8443 -j ACCEPT
 
     # Install Foreman for CentOS 6
-    sudo rpm -ivh http://yum.puppetlabs.com/puppetlabs-release-el-6.noarch.rpm && \
+    ##sudo rpm -ivh http://yum.puppetlabs.com/puppetlabs-release-el-6.noarch.rpm && \
     sudo yum -y install epel-release http://yum.theforeman.org/releases/1.8/el6/x86_64/foreman-release.rpm && \
     sudo yum -y install foreman-installer && \
     sudo foreman-installer
@@ -52,4 +55,25 @@ else
     sudo puppet module install -i /etc/puppet/environments/production/modules puppetlabs-haproxy
     sudo puppet module install -i /etc/puppet/environments/production/modules puppetlabs-apache
     sudo puppet module install -i /etc/puppet/environments/production/modules puppetlabs-java
+	
+	# # Setup Ruby 1.93
+	# sudo yum -y install gcc-c++ patch readline readline-devel zlib zlib-devel 
+	# sudo yum -y install libyaml-devel libffi-devel openssl-devel make 
+	# sudo yum -y install bzip2 autoconf automake libtool bison iconv-devel
+	
+	# command curl -sSL https://rvm.io/mpapis.asc | gpg2 --import -
+	
+	# curl -L get.rvm.io | bash -s stable
+	
+	# source /home/vagrant/.rvm/scripts/rvm
+	
+	# su root #<---- password is vagrant
+	
+	# rvm install 1.9.3
+
+	#rvm use 1.9.3 --default 
+	
+	# Install SpecServer
+	#gem install 'serverspec'
+	
 fi

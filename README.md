@@ -93,3 +93,20 @@ Some logs require sudo access
 * `sudo tail -50 /var/log/foreman-installer/foreman-installer.log`
 * `sudo tail -50 /var/log/foreman-proxy/proxy.log`
 * `tail -50 ~/VirtualBox\ VMs/<group>/<machine>/Logs/VBox.log`
+
+##### ServerSpec
+ 
+Setup Project Folder
+ sudo mkdir /opt/iSpec
+ cd /opt/iSpec
+ sudo chmod -R 777 /opt/iSpec
+
+Install
+ sudo gem install 'serverspec' 
+
+Start Project
+ serverspec-init
+ 
+Clean Up
+ sudo rm -rf /opt/iSpec/*
+ 

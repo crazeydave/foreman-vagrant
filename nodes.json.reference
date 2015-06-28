@@ -1,0 +1,68 @@
+{
+  "nodes": {
+    "theforeman.testing": {
+      ":ip": "192.168.35.5",
+      "ports": [],
+      ":memory": 1024,
+      ":box": "chef/centos-6.5",
+      ":bootstrap": "bootstrap-foreman.sh",
+	  ":opt": "foreman-testing"
+    },
+    "agent01.testing": {
+      ":ip": "192.168.35.10",
+      "ports": [],
+      ":memory": 512,
+      ":box": "chef/centos-6.5",
+      ":bootstrap": "bootstrap-node-rhel.sh",
+	  ":opt": "agent01-testing"
+    },
+    "agent02.testing": {
+      ":ip": "192.168.35.20",
+      "ports": [],
+      ":memory": 1024,
+      ":box": "chef/centos-6.5",
+      ":bootstrap": "bootstrap-node-rhel.sh",
+	  ":opt": "agent02-testing"
+    },
+    "haproxy.testing": {
+      ":ip": "192.168.35.101",
+      "ports": [],
+      ":memory": 512,
+      ":box": "chef/centos-6.5",
+      ":bootstrap": "bootstrap-node-rhel.sh",
+	  ":opt": "haproxy-testing"
+    },
+    "node01.testing": {
+      ":ip": "192.168.35.121",
+      "ports": [],
+      ":memory": 512,
+      ":box": "chef/centos-6.5",
+      ":bootstrap": "bootstrap-node-rhel.sh",
+	  ":opt": "node01-testing"
+    },
+    "node02.testing": {
+      ":ip": "192.168.35.122",
+      "ports": [],
+      ":memory": 512,
+      ":box": "chef/centos-6.5",
+      ":bootstrap": "bootstrap-node-rhel.sh",
+	  ":opt": "node02-testing"
+    },
+    "node03.testing": {
+      ":ip": "192.168.35.123",
+      "ports": [],
+      ":memory": 512,
+      ":box": "chef/centos-6.5",
+      ":bootstrap": "bootstrap-node-rhel.sh",
+	  ":opt": "node03-testing"
+    },
+    "node04.testing": {
+      ":ip": "192.168.35.124",
+      "ports": [],
+      ":memory": 512,
+      ":box": "ubuntu/trusty64",
+      ":bootstrap": "bootstrap-node-ubuntu.sh",
+	  ":opt": "node04-testing"
+    }
+  }
+}

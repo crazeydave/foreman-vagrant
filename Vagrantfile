@@ -33,11 +33,16 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
           guest: port[':guest'],
           id:    port[':id']
       end
+ 
+	config.vm.provision :shell, :path => "install-rvm.sh",  :args => "stable"
+	config.vm.provision :shell, :path => "install-ruby.sh", :args => "1.9.3"
+ 
+	config.vm.synced_folder node_values[':opt'], "/opt/testing", create:true
 
-      config.vm.hostname = node_name
-      config.vm.network :private_network, ip: node_values[':ip']
+    config.vm.hostname = node_name
+    config.vm.network :private_network, ip: node_values[':ip']
 
-      config.vm.provider :virtualbox do |vb|
+    config.vm.provider :virtualbox do |vb|
         vb.customize ["modifyvm", :id, "--memory", node_values[':memory']]
         vb.customize ["modifyvm", :id, "--name", node_name]
       end
